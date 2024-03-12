@@ -5,13 +5,17 @@ import { useState, useEffect } from "react";
 const DataModal = () => {
   const [data, setData] = useState({ hits: [] });
 
-  useEffect(async () => {
+  useEffect(() => {
+    
+    const fetchData = async () => {
     const result = await axios(
       "http://hn.algolia.com/api/v1/search?query=redux"
     );
-
     setData(result.data);
-  }, []);
+  }
+
+  fetchData()
+}, []);
 
   return (
     <ul>
